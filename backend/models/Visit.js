@@ -1,7 +1,7 @@
 module.exports = (sequelize, Sequelize) => {
   const Visit = sequelize.define("Visit", {
-    urlId: {
-      type: Sequelize.INTEGER,
+    shortCode: {
+      type: Sequelize.STRING,
     },
     platform: {
       type: Sequelize.STRING,
