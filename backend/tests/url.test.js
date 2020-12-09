@@ -37,6 +37,19 @@ describe("Test Url can be shortened", () => {
     expect(response.status).toBe(400);
     done();
   });
+
+  test("Existing custom shortcode not allow", async (done) => {
+    await db.Url.create({
+      url: "https://google.com",
+      shortCode: "exists",
+    });
+    const response = await request(app).post("/api/urls/exists").send({
+      url: "https://github.com/niyiojeyinka", //
+    });
+
+    expect(response.status).toBe(400);
+    done();
+  });
 });
 
 afterAll(async () => {
