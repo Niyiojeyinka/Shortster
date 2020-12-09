@@ -9,13 +9,13 @@ beforeAll(async () => {
 
 describe("Stats tests", () => {
   test("test invalid shortcode is handled", async (done) => {
-    const response = await request(app).get("/invalidshortcode/stats");
+    const response = await request(app).get("api/urls/invalidshortcode/stats");
     expect(response.status).toBe(400);
     done();
   });
 
   test("Test valid shortcode return its stats", async (done) => {
-    const response = await request(app).get("/validcode/stats");
+    const response = await request(app).get("api/urls/validcode/stats");
     expect(response.status).toBe(200);
     expect(response.body.data.history.length).toBeGreaterThan(0);
     done();

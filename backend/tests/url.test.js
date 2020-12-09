@@ -9,7 +9,7 @@ beforeAll(async () => {
 
 describe("Test Url can be shortened", () => {
   test("Url can be shortened and its 6 characters only", async (done) => {
-    const response = await request(app).post("/api/create").send({
+    const response = await request(app).post("/api/urls").send({
       url: "https://github.com/niyiojeyinka", //
     });
 
@@ -19,7 +19,7 @@ describe("Test Url can be shortened", () => {
   });
 
   test("Does not allow invalid URL", async (done) => {
-    const response = await request(app).post("/api/create").send({
+    const response = await request(app).post("/api/urls").send({
       url: "invalid/niyiojeyinka", //
     });
 
@@ -30,7 +30,7 @@ describe("Test Url can be shortened", () => {
 
 describe("Test Url can be shortened", () => {
   test("custom shortcode can be created and its min 4 chars", async (done) => {
-    const response = await request(app).post("/api/create/niyi").send({
+    const response = await request(app).post("/api/urls/niyi").send({
       url: "https://github.com/niyiojeyinka", //
     });
 
@@ -39,7 +39,7 @@ describe("Test Url can be shortened", () => {
   });
 
   test("Does not allow invalid shortcode", async (done) => {
-    const response = await request(app).post("/api/create/ni").send({
+    const response = await request(app).post("/api/urls/ni").send({
       url: "https://github.com/niyiojeyinka", //
     });
 

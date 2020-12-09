@@ -17,8 +17,9 @@ describe("url helper functions tests", () => {
 });
 
 describe("shortcode functions tests", () => {
-  test("validate autoshortcode is 6 long chars ", (done) => {
-    expect(shortCodeHelper.generateShortCode().length).toEqual(6);
+  test("validate autoshortcode is 6 long chars ", async (done) => {
+    const uniqueShortCode = await shortCodeHelper.generateShortCode();
+    expect(uniqueShortCode.length).toEqual(6);
     done();
   });
   test("validate shortcode is unique", async (done) => {
