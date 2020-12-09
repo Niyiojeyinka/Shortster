@@ -11,5 +11,5 @@ db.sequelize.sync({ force: true }).then(() => {
 });
 app.use(bodyParser.json());
 app.use("/public", express.static(path.join(__dirname, "public")));
-app.use("/", routes);
+app.use("/api", routes);
 module.exports = app;

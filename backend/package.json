@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server",
-    "test": "jest",
+    "test": "NODE_ENV=test jest --runInBand",
     "release": "standard-version"
   },
   "repository": {
@@ -24,6 +24,7 @@
   "homepage": "https://github.com/niyiojeyinka/Shortster#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "md5": "^2.3.0",
