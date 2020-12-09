@@ -1,6 +1,6 @@
 const urlHelper = require("../helpers/url");
 const shortCodeHelper = require("../helpers/shortcode");
-const Url = require("../models/Url");
+const db = require("../models");
 
 describe("url helper functions tests", () => {
   test("test valid url returns True", (done) => {
@@ -22,16 +22,18 @@ describe("shortcode functions tests", () => {
     done();
   });
   test("validate shortcode is unique", async (done) => {
-    await Url.create({
+    await db.Url.create({
       url: "https://google.com",
-      shortCode: "exist",
+      shortCode: "exists",
     });
-    expect(shortCodeHelper.checkShortCodeExists("exists")).toBeTruthy();
-    expect(shortCodeHelper.checkShortCodeExists("notexists")).toBeFalsy();
+    let res = await shortCodeHelper.checkShortCodeExists("exists");
+    expect(res).toBeTruthy();
+    res = await shortCodeHelper.checkShortCodeExists("notexists");
+    expect(res).toBeFalsy();
     done();
   });
 
-  test("validate user defined shortcode greater than 4", (done) => {
+  test("validate user defined shortcode greater than 4 or equal 4", (done) => {
     expect(
       shortCodeHelper.validateUserDefinedShortCode("defined")
     ).toBeTruthy();
