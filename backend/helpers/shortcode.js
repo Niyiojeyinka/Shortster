@@ -4,14 +4,32 @@ const db = require("../models");
  *
  * @returns string of 6 digits
  */
-exports.generateShortCode = function () {
+exports.generateShortCode = async function () {
   availChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   let randomString = "";
   for (let i = 0; i < 6; i++) {
     let randomPositon = Math.floor(Math.random() * availChars.length);
     randomString += availChars.substring(randomPositon, randomPositon + 1);
   }
-  return randomString;
+
+  // return randomString;
+
+  try {
+    const url = await db.Url.findOne({
+      where: {
+        shortCode: randomString,
+      },
+    });
+
+    if (url) {
+      //shortcode exists retry
+      return generateShortCode();
+    } else {
+      return randomString;
+    }
+  } catch (e) {
+    return e;
+  }
 };
 
 /** validate if user defined input greater 4
