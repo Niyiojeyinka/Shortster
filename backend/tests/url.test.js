@@ -52,6 +52,26 @@ describe("Test Url can be shortened", () => {
   });
 });
 
+describe("URL is redirecting endpoint", () => {
+  test("Valid url returns correspong address", async (done) => {
+    await db.Url.create({
+      url: "https://myspaceclub.com",
+      shortCode: "mysp",
+    });
+    const response = await request(app).get("/mysp");
+
+    expect(response.status).toBe(308);
+    done();
+  });
+
+  test("inValid url returns 404", async (done) => {
+    const response = await request(app).get("/mtsp");
+
+    expect(response.status).toBe(404);
+    done();
+  });
+});
+
 afterAll(async () => {
   await db.sequelize.close();
 });

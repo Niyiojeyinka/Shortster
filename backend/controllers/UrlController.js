@@ -54,8 +54,8 @@ exports.getStats = async (req, res) => {
     },
   });
   if (!url.shortCode) {
-    return res.status(404).json({
-      name: "NotFound",
+    return res.status(204).json({
+      name: "ShortCodeNotFound",
       message: "Short Code Not Found",
       data: {},
     });
