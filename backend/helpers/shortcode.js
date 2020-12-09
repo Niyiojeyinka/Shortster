@@ -49,12 +49,14 @@ exports.validateUserDefinedShortCode = function (text) {
 
 exports.checkShortCodeExists = async function (shortcode) {
   try {
-    const url = await db.Url.findOne({
-      where: {
-        shortCode: shortcode,
-      },
-    });
-    return url.shortCode ? true : false;
+    const url = await db.sequelize.query(
+      "SELECT * FROM `Urls` WHERE BINARY `shortCode` = '" +
+        shortcode +
+        "' LIMIT 1",
+      { type: db.sequelize.QueryTypes.SELECT }
+    );
+    console.log("Hey look here...." + url);
+    return url[0].shortCode ? true : false;
   } catch (e) {
     return false;
   }

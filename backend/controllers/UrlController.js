@@ -18,6 +18,7 @@ exports.create = async (req, res) => {
           data: [],
         });
       }
+      shortcode = req.params.shortcode;
     } else {
       //generate new code
       shortcode = await shortCodeHelper.generateShortCode();
