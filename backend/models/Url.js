@@ -1,15 +1,11 @@
 module.exports = (sequelize, Sequelize) => {
-  const Url = sequelize.define("url", {
-    link: {
+  const Url = sequelize.define("Url", {
+    url: {
       type: Sequelize.STRING,
       allowNull: false,
     },
     shortCode: {
       type: Sequelize.STRING,
-      allowNull: false,
-    },
-    status: {
-      type: Sequelize.BOOLEAN,
       allowNull: false,
     },
   });
