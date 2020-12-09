@@ -24,10 +24,10 @@ describe("shortcode functions tests", () => {
   });
   test("validate shortcode is unique", async (done) => {
     await db.Url.create({
-      url: "https://google.com",
-      shortCode: "exists",
+      url: "https://google.com.ng",
+      shortCode: "existing",
     });
-    let res = await shortCodeHelper.checkShortCodeExists("exists");
+    let res = await shortCodeHelper.checkShortCodeExists("existing");
     expect(res).toBeTruthy();
     res = await shortCodeHelper.checkShortCodeExists("notexists");
     expect(res).toBeFalsy();

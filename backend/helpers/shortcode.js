@@ -1,6 +1,6 @@
 const db = require("../models");
 
-/** Helps Generate a 6 digit shortcode
+/** Helps Generate unique a 6 digit shortcode
  *
  * @returns string of 6 digits
  */
@@ -38,7 +38,7 @@ exports.generateShortCode = async function () {
  */
 
 exports.validateUserDefinedShortCode = function (text) {
-  return text.length >= 4 ? true : false;
+  return text.length < 4 ? false : true;
 };
 
 /** Check if shortcode already exist or not
@@ -54,7 +54,7 @@ exports.checkShortCodeExists = async function (shortcode) {
         shortCode: shortcode,
       },
     });
-    return url ? true : false;
+    return url.shortCode ? true : false;
   } catch (e) {
     return false;
   }

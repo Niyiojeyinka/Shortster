@@ -10,14 +10,24 @@ beforeAll(async () => {
 describe("Stats tests", () => {
   test("test invalid shortcode is handled", async (done) => {
     const response = await request(app).get("api/urls/invalidshortcode/stats");
-    expect(response.status).toBe(400);
+    expect(response.status).toBe(404);
     done();
   });
 
   test("Test valid shortcode return its stats", async (done) => {
-    const response = await request(app).get("api/urls/validcode/stats");
+    //insert url
+    await db.Url.create({
+      url: "https://www.aws.com/ec2",
+      shortCode: "validcod",
+    });
+    //insert views
+    await db.Visit.create({
+      shortCode: "validcod",
+    });
+
+    const response = await request(app).get("/api/urls/validcod/stats");
     expect(response.status).toBe(200);
-    expect(response.body.data.history.length).toBeGreaterThan(0);
+    expect(response.body.data.novisits).toBeGreaterThan(0);
     done();
   });
 });

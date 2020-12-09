@@ -39,4 +39,40 @@ exports.create = async (req, res) => {
     console.log(e);
   }
 };
-exports.getStats = (req, res) => {};
+
+/** Stats Endpoint
+ *
+ *
+ * @param {*} req
+ * @param {*} res
+ */
+exports.getStats = async (req, res) => {
+  const url = await db.Url.findOne({
+    where: {
+      shortCode: req.params.shortcode,
+    },
+  });
+  if (!url.shortCode) {
+    return res.status(404).json({
+      name: "NotFound",
+      message: "Short Code Not Found",
+      data: {},
+    });
+  }
+  const visits = await db.Visit.findAndCountAll({
+    where: {
+      shortCode: req.params.shortcode,
+    },
+  });
+
+  return res.status(200).json({
+    name: "success",
+    message: "Data fetched successfully.",
+    data: {
+      created: url.createdAt,
+      visits: visits.rows.slice(-10),
+      novisits: visits.count,
+      lastvisit: visits.rows[visits.count - 1].createdAt,
+    },
+  });
+};

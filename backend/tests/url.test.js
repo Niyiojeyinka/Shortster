@@ -31,7 +31,7 @@ describe("Test Url can be shortened", () => {
 
   test("Does not allow invalid shortcode", async (done) => {
     const response = await request(app).post("/api/urls/ni").send({
-      url: "https://github.com/niyiojeyinka", //
+      url: "https://github.com/niyiojeyinka/shortster", //
     });
 
     expect(response.status).toBe(400);
