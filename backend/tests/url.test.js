@@ -17,15 +17,6 @@ describe("Test Url can be shortened", () => {
     expect(response.body.data.shortcode.length).toEqual(6);
     done();
   });
-
-  test("Does not allow invalid URL", async (done) => {
-    const response = await request(app).post("/api/urls").send({
-      url: "invalid/niyiojeyinka", //
-    });
-
-    expect(response.status).toBe(400);
-    done();
-  });
 });
 
 describe("Test Url can be shortened", () => {
