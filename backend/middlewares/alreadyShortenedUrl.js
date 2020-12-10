@@ -13,10 +13,10 @@ module.exports = async (req, res, next) => {
     } else {
       res.status(201).json({
         name: "Shortened",
-        host: urlhelper.url(req),
         message: "code shortened Already.",
         data: {
           shortcode: url.shortCode,
+          host: urlhelper.url(req),
         },
       });
     }

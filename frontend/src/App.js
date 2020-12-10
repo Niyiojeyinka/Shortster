@@ -6,7 +6,7 @@ import "./w3.css";
 export default function App() {
   return (
     <Router>
-      <div>
+      <div className="bg-body-image">
         <Header />
 
         <Switch>

@@ -32,10 +32,10 @@ exports.create = async (req, res) => {
 
     return res.status(201).json({
       name: "Shortened",
-      host: url.url(req),
       message: "code shortened successfuly.",
       data: {
         shortcode: shortcode,
+        host: url.url(req),
       },
     });
   } catch (e) {
