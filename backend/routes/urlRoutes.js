@@ -5,6 +5,7 @@ const UrlCtrl = require("../controllers/UrlController");
 const checkShortened = require("../middlewares/alreadyShortenedUrl");
 const validateUrl = require("../middlewares/validateUrl");
 const checkCodeNotExists = require("../middlewares/checkShortCodeExists");
+
 router.get("/:shortcode/stats", useCor, UrlCtrl.getStats);
 router.post("/", useCor, checkShortened, validateUrl, UrlCtrl.create);
 router.post(
