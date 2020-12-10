@@ -1,4 +1,5 @@
 const db = require("../models");
+const urlhelper = require("../helpers/url");
 
 module.exports = async (req, res, next) => {
   try {
@@ -12,6 +13,7 @@ module.exports = async (req, res, next) => {
     } else {
       res.status(201).json({
         name: "Shortened",
+        host: urlhelper.url(req),
         message: "code shortened Already.",
         data: {
           shortcode: url.shortCode,

@@ -1,6 +1,6 @@
 const shortCodeHelper = require("../helpers/shortcode");
 const db = require("../models");
-
+const url = require("../helpers/url");
 /** create a shorten url
  *
  * @param {*} req
@@ -32,6 +32,7 @@ exports.create = async (req, res) => {
 
     return res.status(201).json({
       name: "Shortened",
+      host: url.url(req),
       message: "code shortened successfuly.",
       data: {
         shortcode: shortcode,
