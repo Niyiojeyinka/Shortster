@@ -1,4 +1,8 @@
 function Stats() {
-  return <h2>Stats</h2>;
+  return (
+    <div className="w3-padding">
+      <h2 className="w3-text-red">Stats</h2>
+    </div>
+  );
 }
 export default Stats;

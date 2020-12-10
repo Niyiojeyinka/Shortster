@@ -1,6 +1,7 @@
 # Shortster
 
 <p>A fullstack link shortner web application based on MERN Stack</p>
+<img src="https://res.cloudinary.com/open-source/image/upload/v1607642077/shortsterscreenshort_jkb8dv.png"/>
 <br>
 <a href="#backend">Backend</a><br>
 <a href="#api">API Docs</a>
@@ -37,6 +38,11 @@ Full API Documentation available here
 <br>
 <br>
 <div id="frontend">
+<ul>
+<li>navigate to the frontend sub directory <code>cd frontend</code></li><br>
+<li>install dependencies by running <code>yarn or npm install   /</code></li><br>
 
+<li>start by running <code> yarn start or npm start </code></li><br>
+</ul>
 </div>
 ```

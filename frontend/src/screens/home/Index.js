@@ -65,7 +65,7 @@ function Home() {
       onChange={(e) => {
         setCustomInput(e.target.value);
       }}
-      placeholder="link"
+      placeholder="Your Custom Shortcode"
       style={{ minWidth: "20%", height: "40px", marginBottom: "50px" }}
     />
   );
