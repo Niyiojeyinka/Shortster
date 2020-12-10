@@ -6,15 +6,16 @@ const checkShortened = require("../middlewares/alreadyShortenedUrl");
 const validateUrl = require("../middlewares/validateUrl");
 const checkCodeNotExists = require("../middlewares/checkShortCodeExists");
 
-router.get("/:shortcode/stats", useCor, UrlCtrl.getStats);
-router.post("/", useCor, checkShortened, validateUrl, UrlCtrl.create);
+router.post("/urls", useCor, checkShortened, validateUrl, UrlCtrl.create);
 router.post(
-  "/:shortcode",
+  "/urls/:shortcode",
   useCor,
   checkCodeNotExists,
   checkShortened,
   validateUrl,
   UrlCtrl.create
 );
+router.get("/:shortcode/stats", useCor, UrlCtrl.getStats);
+router.get("/:shortcode", UrlCtrl.redirect);
 
 module.exports = router;

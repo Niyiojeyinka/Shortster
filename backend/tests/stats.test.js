@@ -9,7 +9,7 @@ beforeAll(async () => {
 
 describe("Stats tests", () => {
   test("test invalid shortcode is handled", async (done) => {
-    const response = await request(app).get("api/urls/invalidshortcode/stats");
+    const response = await request(app).get("invalidshortcode/stats");
     expect(response.status).toBe(404);
     done();
   });
@@ -25,7 +25,7 @@ describe("Stats tests", () => {
       shortCode: "validcod",
     });
 
-    const response = await request(app).get("/api/urls/validcod/stats");
+    const response = await request(app).get("/validcod/stats");
     expect(response.status).toBe(200);
     expect(response.body.data.novisits).toBeGreaterThan(0);
     done();
