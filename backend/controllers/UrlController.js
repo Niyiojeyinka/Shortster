@@ -113,7 +113,10 @@ exports.redirect = async (req, res) => {
     await db.Visit.create({
       shortCode: req.params.shortcode,
     });
-    return res.redirect(307, url[0].url);
+    return res.redirect(
+      307,
+      url[0].url.indexOf("http") != -1 ? url[0].url : "https://" + url[0].url
+    );
   } else {
     return res.status(404).json({
       name: "UrlNotFound",
