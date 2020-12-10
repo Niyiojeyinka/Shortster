@@ -60,7 +60,7 @@ describe("URL is redirecting endpoint", () => {
     });
     const response = await request(app).get("/mysp");
 
-    expect(response.status).toBe(308);
+    expect(response.status).toBe(307);
     done();
   });
 

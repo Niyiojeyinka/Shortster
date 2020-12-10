@@ -10,7 +10,7 @@ beforeAll(async () => {
 describe("Stats tests", () => {
   test("test invalid shortcode is handled", async (done) => {
     const response = await request(app).get("api/urls/invalidshortcode/stats");
-    expect(response.status).toBe(204);
+    expect(response.status).toBe(404);
     done();
   });
 
